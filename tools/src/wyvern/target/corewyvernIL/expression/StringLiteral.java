@@ -99,7 +99,18 @@ public class StringLiteral extends Literal implements Invokable {
         case "<=": return new BooleanLiteral(value.compareTo(((StringLiteral) args.get(0)).getValue()) <= 0);
         case ">=": return new BooleanLiteral(value.compareTo(((StringLiteral) args.get(0)).getValue()) >= 0);
         case "!=": return new BooleanLiteral(value.compareTo(((StringLiteral) args.get(0)).getValue()) != 0);
-        case "+": return new StringLiteral(value + ((StringLiteral) args.get(0)).getValue());
+        case "+":
+            // check the type of the right hand side of the operator
+            if (args.get(0) instanceof CharacterLiteral) {
+                // case when the right hand side of the operator is a CharacterLiteral type.
+                return new StringLiteral("" + this.value + ((CharacterLiteral) args.get(0)).getValue());
+            } else if (args.get(0) instanceof StringLiteral) {
+                // case when the right hand side of the operator is a StringLiteral type.
+                return new StringLiteral(this.value + ((StringLiteral) args.get(0)).getValue());
+            } else {
+                // case when the right hand side of the operator is neither a CharacterLiteral type nor a StringLiteral type.
+                throw new RuntimeException("The right side of \" + \" operator has wrong type! It must be either a character or a string.");
+            }
         case "equals": return new BooleanLiteral(value.equals(((StringLiteral) args.get(0)).getValue()));
         case "length": return new IntegerLiteral(value.length());
         case "charAt": return new CharacterLiteral(value.charAt(((IntegerLiteral) args.get(0)).getValue()));
