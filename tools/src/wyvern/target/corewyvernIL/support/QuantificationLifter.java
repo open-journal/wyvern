@@ -12,6 +12,7 @@ import wyvern.target.corewyvernIL.decl.ForwardDeclaration;
 import wyvern.target.corewyvernIL.decl.EffectDeclaration;
 import wyvern.target.corewyvernIL.decl.ModuleDeclaration;
 import wyvern.target.corewyvernIL.decl.NamedDeclaration;
+import wyvern.target.corewyvernIL.decl.RecConstructDeclaration;
 import wyvern.target.corewyvernIL.decl.TypeDeclaration;
 import wyvern.target.corewyvernIL.decl.ValDeclaration;
 import wyvern.target.corewyvernIL.decl.VarDeclaration;
@@ -416,6 +417,16 @@ public final class QuantificationLifter {
                 }
                 return new EffectDeclType(effectDeclType.getName(), newEffectSet, effectDeclType.getLocation());
             }
+
+            @Override
+            public DeclType visit(State state, RecConstructDeclaration recConstructDeclaration) {
+                return null;
+            }
+        }
+
+        @Override
+        public ValueType visit(State state, RecConstructDeclaration recConstructDeclaration) {
+            return null;
         }
     }
 
@@ -510,6 +521,11 @@ public final class QuantificationLifter {
                 newEffectSet = oldEffectSet;
             }
             return new EffectDeclaration(effectDeclaration.getName(), newEffectSet, effectDeclaration.getLocation());
+        }
+
+        @Override
+        public NamedDeclaration visit(State state, RecConstructDeclaration recConstructDeclaration) {
+            return null;
         }
     }
 }

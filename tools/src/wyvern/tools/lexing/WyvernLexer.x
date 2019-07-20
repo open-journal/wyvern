@@ -219,6 +219,7 @@ import static wyvern.tools.parsing.coreparser.WyvernParserConstants.*;
  	//terminal Token elseKwd_t   ::= /else/ in (keywds);
  	terminal Token objtypeKwd_t   ::= /objtype/ in (keywds);
  	terminal Token effectKwd_t	::= /effect/ in (keywds) {: RESULT = token(EFFECT,lexeme); :};
+	terminal Token recKwd_t::= /rec/ in (keywds) {: RESULT = token(REC,lexeme); flagTok = RESULT; :};
  	
  	terminal Token resourceKwd_t    ::= /resource/ in (keywds) {: RESULT = token(RESOURCE,lexeme); :};
  	terminal Token asKwd_t ::= /as/ in (keywds) {: RESULT = token(AS,lexeme); :};
@@ -424,6 +425,7 @@ import static wyvern.tools.parsing.coreparser.WyvernParserConstants.*;
 	       | assertKwd_t:t {: RESULT = t; :}
 	      // | whileKwd_t:t {: RESULT = t; :}
 	       | forwardKwd_t:t {: RESULT = t; :}
+		   | recKwd_t:t {: RESULT = t; :}
 	       | toKwd_t:t {: RESULT = t; :}
 //	       | fnKwd_t:t {: RESULT = t; :}
 	       | requireKwd_t:t {: RESULT = t; :}

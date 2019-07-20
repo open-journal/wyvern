@@ -26,6 +26,8 @@ interface ASTBuilder<AST, Type> {
     );
 
     AST forwardDecl(Type type, AST exp, FileLocation loc);
+    AST recDecl(AST body, FileLocation loc);
+    AST recConstructDecl(String name, Type type, AST body, FileLocation loc);
     AST effectDecl(String name, String effects, FileLocation loc);
     AST assertion(String description, AST exp, FileLocation loc);
 

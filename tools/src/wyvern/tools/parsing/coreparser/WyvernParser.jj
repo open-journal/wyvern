@@ -338,6 +338,8 @@ AST Declaration(boolean inModule) :
   exp = ExpressionLine(inModule) { return exp; }
 |
   exp = Instantiation() { return exp; }
+|
+  exp = RecDeclaration() { return exp; }
 //|
 //  exp = WhileDeclaration() { return exp; }
 }
@@ -350,6 +352,42 @@ AST DefDeclaration() :
     	return build.defDecl(name.image, resultType, gentypes, args, body, false, loc(name), null);
   	} 
   	return build.defDecl(name.image, resultType, gentypes, args, body, false, loc(name), effects.image);
+  }
+}
+
+AST RecConstruct() :
+{
+    Type type;
+    Token name;
+    AST body;
+}
+{
+    name=<IDENTIFIER> <COLON> type = Type() body = DefBody()
+    {
+  	    return build.recConstructDecl(name.image, type, body, loc(name));
+    }
+}
+
+AST RecBody() :
+{ 
+  AST exp1;
+  AST exp2;
+}
+{
+    exp1 = RecConstruct()
+    ( exp2 = RecConstruct() { exp1 = build.sequence(exp1, exp2, false); } )*
+    { return exp1; }
+}
+
+AST RecDeclaration() :
+{ 
+  AST body; 
+  Token t;
+}
+{
+  t = <REC> <NEWLINE> <INDENT> body = RecBody() <DEDENT>
+  {
+	  return build.recDecl(body, loc(t));
   }
 }
 
@@ -780,6 +818,29 @@ Type NonArrowType() :
   }
 |
   id = <IDENTIFIER> (<DOT> id2 = <IDENTIFIER> {
+    if (exp == null) {
+        exp = build.var(id.image, loc(id));
+    } else {
+        exp = build.invocation(exp, id.image, null, loc(id));
+    }
+    id = id2;
+ })*
+ ( generics = Generics() )? {
+    if (exp == null) {
+        t = build.nominalType(id.image, loc(id));
+    } else {
+        t = build.qualifiedType(exp, id2.image);
+    }
+    
+    if (generics != null) {
+        Object o = build.parameterizedType(t, generics, loc(id));
+        t = (Type) o;
+    }
+    return t;
+ }
+|
+  // for placeholder types
+  <BOOLEANNOT> id = <IDENTIFIER> (<DOT> id2 = <IDENTIFIER> {
     if (exp == null) {
         exp = build.var(id.image, loc(id));
     } else {

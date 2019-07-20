@@ -11,6 +11,8 @@ import wyvern.tools.typedAST.core.declarations.EffectDeclaration;
 import wyvern.tools.typedAST.core.declarations.ImportDeclaration;
 import wyvern.tools.typedAST.core.declarations.Instantiation;
 import wyvern.tools.typedAST.core.declarations.ModuleDeclaration;
+import wyvern.tools.typedAST.core.declarations.RecConstructDeclaration;
+import wyvern.tools.typedAST.core.declarations.RecDeclaration;
 import wyvern.tools.typedAST.core.declarations.TypeAbbrevDeclaration;
 import wyvern.tools.typedAST.core.declarations.TypeDeclaration;
 import wyvern.tools.typedAST.core.declarations.TypeVarDecl;
@@ -68,4 +70,6 @@ public abstract class TypedASTVisitor<S, T> {
     public abstract T visit(S state, Script ast);
     public abstract T visit(S state, Sequence ast);
     public abstract T visit(S state, DSLLit ast);
+    public abstract T visit(S state, RecConstructDeclaration ast);
+    public abstract T visit(S state, RecDeclaration ast);
 }

@@ -29,6 +29,8 @@ import wyvern.tools.typedAST.core.declarations.EffectDeclaration;
 import wyvern.tools.typedAST.core.declarations.ImportDeclaration;
 import wyvern.tools.typedAST.core.declarations.Instantiation;
 import wyvern.tools.typedAST.core.declarations.ModuleDeclaration;
+import wyvern.tools.typedAST.core.declarations.RecConstructDeclaration;
+import wyvern.tools.typedAST.core.declarations.RecDeclaration;
 import wyvern.tools.typedAST.core.declarations.TypeAbbrevDeclaration;
 import wyvern.tools.typedAST.core.declarations.TypeVarDecl;
 import wyvern.tools.typedAST.core.declarations.ValDeclaration;
@@ -541,6 +543,16 @@ public class WyvernASTBuilder implements ASTBuilder<TypedAST, Type> {
 
     public TypedAST floatLit(float value, FileLocation loc) {
       return new FloatConstant(value, loc);
+    }
+
+    @Override
+    public TypedAST recDecl(TypedAST body, FileLocation loc) {
+      return new RecDeclaration(body, loc);
+    }
+
+    @Override
+    public TypedAST recConstructDecl(String name, Type type, TypedAST body, FileLocation loc) {
+      return new RecConstructDeclaration(name, type, body, loc);
     }
 
 }

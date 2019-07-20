@@ -14,6 +14,7 @@ import wyvern.target.corewyvernIL.decl.DefDeclaration;
 import wyvern.target.corewyvernIL.decl.ForwardDeclaration;
 import wyvern.target.corewyvernIL.decl.EffectDeclaration;
 import wyvern.target.corewyvernIL.decl.ModuleDeclaration;
+import wyvern.target.corewyvernIL.decl.RecConstructDeclaration;
 import wyvern.target.corewyvernIL.decl.TypeDeclaration;
 import wyvern.target.corewyvernIL.decl.ValDeclaration;
 import wyvern.target.corewyvernIL.decl.VarDeclaration;
@@ -577,6 +578,12 @@ public class EmitOIRVisitor extends ASTVisitor<EmitOIRState, OIRAST> {
     public OIRAST visit(EmitOIRState state, FloatLiteral flt) {
       OIRFloat oirInt = new OIRFloat(flt.getFullValue());
       oirInt.copyMetadata(flt);
-      return oirInt;
+        return oirInt;
     }
+
+    @Override
+    public OIRAST visit(EmitOIRState state, RecConstructDeclaration recConstructDeclaration) {
+        return null;
+    }
+
 }
