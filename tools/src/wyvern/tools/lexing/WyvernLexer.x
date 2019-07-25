@@ -56,6 +56,7 @@ import static wyvern.tools.parsing.coreparser.WyvernParserConstants.*;
 		  case NEW:
 		  case MATCH:
 		  case EQARROW:
+      case REC:
 		  		return false;
 		  default:
 		  		throw new RuntimeException("broke invariant!");

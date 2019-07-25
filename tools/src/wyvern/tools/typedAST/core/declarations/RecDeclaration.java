@@ -7,9 +7,6 @@ import wyvern.target.corewyvernIL.BindingSite;
 import wyvern.target.corewyvernIL.decltype.DeclType;
 import wyvern.target.corewyvernIL.decltype.RecDeclType;
 import wyvern.target.corewyvernIL.expression.Variable;
-//import wyvern.target.corewyvernIL.expression.Expression;
-//import wyvern.target.corewyvernIL.expression.;
-//import wyvern.target.corewyvernIL.expression.RecExpression;
 import wyvern.target.corewyvernIL.modules.TypedModuleSpec;
 import wyvern.target.corewyvernIL.support.GenContext;
 import wyvern.target.corewyvernIL.support.TopLevelContext;
@@ -20,9 +17,7 @@ import wyvern.tools.types.Type;
 import wyvern.tools.errors.FileLocation;
 import wyvern.tools.typedAST.abs.Declaration;
 import wyvern.tools.typedAST.core.Sequence;
-import wyvern.tools.typedAST.core.binding.NameBinding;
 import wyvern.tools.typedAST.interfaces.CoreAST;
-//import wyvern.tools.typedAST.interfaces.ExpressionAST;
 import wyvern.tools.typedAST.interfaces.TypedAST;
 import wyvern.tools.typedAST.typedastvisitor.TypedASTVisitor;
 
@@ -30,7 +25,6 @@ public class RecDeclaration extends Declaration implements CoreAST {
     private List<TypedAST> body;
     private ExpressionAST originalBody;
     private String variableName; // generated fresh variable
-    private List<NameBinding> bodyNameBindings; // store the name binding of the bodies
     private FileLocation location = FileLocation.UNKNOWN;
     private BindingSite bindingSite;
    // private List<wyvern.target.corewyvernIL.decl.Declaration> declarations;
@@ -95,20 +89,19 @@ public class RecDeclaration extends Declaration implements CoreAST {
         //newExp = new wyvern.target.corewyvernIL.expression.New(this.declarations, this.getSite(), declType, getLocation());
 
         // debugger
-        /*
+        
         tlc.addLet(this.getSite(),
                 getILValueType(tlc.getContext()),
                 //newExp,
                 this.originalBody.generateIL(tlc.getContext(), declType, tlc.getDependencies()),
                 true);
-*/
+
         //tlc.updateContext(this.extendContext(ctx));
         //System.out.println("TLC: " + tlc);
     }
 
     @Override
     public FileLocation getLocation() {
-        // TODO Auto-generated method stub
         return this.location;
     }
 
