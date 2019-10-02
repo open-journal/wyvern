@@ -92,6 +92,7 @@ tools/src/wyvern/target/llvm/configure
 tools/jacoco.exec
 tools/report
 tools/out.gradver
+tools/src/wyvern/tools/InterpreterTest.java
 
 node_modules
 *.wyb
