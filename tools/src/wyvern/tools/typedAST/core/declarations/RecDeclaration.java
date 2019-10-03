@@ -36,9 +36,11 @@ public class RecDeclaration extends Declaration implements CoreAST {
         this.variableName = GenContext.generateName(); // generate fresh variable
         this.bindingSite = new BindingSite(this.variableName);
         System.out.println();
-        System.out.println("RecDeclaration Body: " + this.body); // debugger
+        System.out.println("Invoking Constructor in wyvern.tools.typedAST.core.declarations.RecDeclaration");
+        System.out.println("    RecDeclaration Body: " + this.body); // debugger
         System.out.println();
-        System.out.println("RecDeclaration Variable: " + this.variableName);
+        System.out.println("Invoking Constructor in wyvern.tools.typedAST.core.declarations.RecDeclaration");
+        System.out.println("    RecDeclaration Variable: " + this.variableName);
     }
 
     @Override

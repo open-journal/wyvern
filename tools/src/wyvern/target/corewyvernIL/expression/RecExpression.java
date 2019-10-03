@@ -21,6 +21,7 @@ public class RecExpression extends Expression implements Invokable {
 
     @Override
     public Value interpret(EvalContext ctx) {
+        System.out.println("interpret method invoked in wyvern.target.corewyvernIL.expression.RecExpression");
         return null;
     }
 
