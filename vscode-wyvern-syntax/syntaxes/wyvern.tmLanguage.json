@@ -1,0 +1,970 @@
+{
+    "fileTypes": [
+        "wyv"
+    ],
+    "firstLineMatch": "^#!/.*\\b\\w*wyv\\b",
+    "foldingStartMarker": "/\\*\\*|\\{\\s*$",
+    "foldingStopMarker": "\\*\\*/|^\\s*\\}",
+    "keyEquivalent": "^~S",
+    "repository": {
+        "empty-parentheses": {
+            "match": "(\\(\\))",
+            "captures": {
+                "1": {
+                    "name": "meta.bracket.wyvern"
+                }
+            },
+            "name": "meta.parentheses.wyvern"
+        },
+        "imports": {
+            "end": "(?<=[\\n;])",
+            "begin": "\\b(import)\\s+",
+            "beginCaptures": {
+                "1": {
+                    "name": "keyword.other.import.wyvern"
+                }
+            },
+            "patterns": [
+                {
+                    "include": "#comments"
+                },
+                {
+                    "match": "(`[^`]+`|(?:[A-Z\\p{Lt}\\p{Lu}_a-z\\$\\p{Lo}\\p{Nl}\\p{Ll}][A-Z\\p{Lt}\\p{Lu}_a-z\\$\\p{Lo}\\p{Nl}\\p{Ll}0-9]*(?:(?<=_)[!#%&*+\\-\\/:<>=?@^|~\\p{Sm}\\p{So}]+)?|[!#%&*+\\-\\/:<>=?@^|~\\p{Sm}\\p{So}]+))",
+                    "name": "entity.name.import.wyvern"
+                },
+                {
+                    "match": "\\.",
+                    "name": "punctuation.definition.import"
+                },
+                {
+                    "end": "}",
+                    "begin": "{",
+                    "beginCaptures": {
+                        "0": {
+                            "name": "meta.bracket.wyvern"
+                        }
+                    },
+                    "patterns": [
+                        {
+                            "match": "(?x)\\s*(`[^`]+`|(?:[A-Z\\p{Lt}\\p{Lu}_a-z\\$\\p{Lo}\\p{Nl}\\p{Ll}][A-Z\\p{Lt}\\p{Lu}_a-z\\$\\p{Lo}\\p{Nl}\\p{Ll}0-9]*(?:(?<=_)[!#%&*+\\-\\/:<>=?@^|~\\p{Sm}\\p{So}]+)?|[!#%&*+\\-\\/:<>=?@^|~\\p{Sm}\\p{So}]+))\\s*(=>)\\s*(`[^`]+`|(?:[A-Z\\p{Lt}\\p{Lu}_a-z\\$\\p{Lo}\\p{Nl}\\p{Ll}][A-Z\\p{Lt}\\p{Lu}_a-z\\$\\p{Lo}\\p{Nl}\\p{Ll}0-9]*(?:(?<=_)[!#%&*+\\-\\/:<>=?@^|~\\p{Sm}\\p{So}]+)?|[!#%&*+\\-\\/:<>=?@^|~\\p{Sm}\\p{So}]+))\\s*",
+                            "captures": {
+                                "1": {
+                                    "name": "entity.name.import.renamed-from.wyvern"
+                                },
+                                "2": {
+                                    "name": "keyword.other.arrow.wyvern"
+                                },
+                                "3": {
+                                    "name": "entity.name.import.renamed-to.wyvern"
+                                }
+                            }
+                        },
+                        {
+                            "match": "([^\\s.,}]+)",
+                            "name": "entity.name.import.wyvern"
+                        }
+                    ],
+                    "endCaptures": {
+                        "0": {
+                            "name": "meta.bracket.wyvern"
+                        }
+                    },
+                    "name": "meta.import.selector.wyvern"
+                }
+            ],
+            "name": "meta.import.wyvern"
+        },
+
+        "require": {
+            "end": "(?<=[\\n;])",
+            "begin": "\\b(require)\\s+",
+            "beginCaptures": {
+                "1": {
+                    "name": "keyword.other.import.wyvern"
+                }
+            },
+            "patterns": [
+                {
+                    "include": "#comments"
+                },
+                {
+                    "match": "(`[^`]+`|(?:[A-Z\\p{Lt}\\p{Lu}_a-z\\$\\p{Lo}\\p{Nl}\\p{Ll}][A-Z\\p{Lt}\\p{Lu}_a-z\\$\\p{Lo}\\p{Nl}\\p{Ll}0-9]*(?:(?<=_)[!#%&*+\\-\\/:<>=?@^|~\\p{Sm}\\p{So}]+)?|[!#%&*+\\-\\/:<>=?@^|~\\p{Sm}\\p{So}]+))",
+                    "name": "entity.name.import.wyvern"
+                },
+                {
+                    "match": "\\.",
+                    "name": "punctuation.definition.import"
+                },
+                {
+                    "end": "}",
+                    "begin": "{",
+                    "beginCaptures": {
+                        "0": {
+                            "name": "meta.bracket.wyvern"
+                        }
+                    },
+                    "patterns": [
+                        {
+                            "match": "(?x)\\s*(`[^`]+`|(?:[A-Z\\p{Lt}\\p{Lu}_a-z\\$\\p{Lo}\\p{Nl}\\p{Ll}][A-Z\\p{Lt}\\p{Lu}_a-z\\$\\p{Lo}\\p{Nl}\\p{Ll}0-9]*(?:(?<=_)[!#%&*+\\-\\/:<>=?@^|~\\p{Sm}\\p{So}]+)?|[!#%&*+\\-\\/:<>=?@^|~\\p{Sm}\\p{So}]+))\\s*(=>)\\s*(`[^`]+`|(?:[A-Z\\p{Lt}\\p{Lu}_a-z\\$\\p{Lo}\\p{Nl}\\p{Ll}][A-Z\\p{Lt}\\p{Lu}_a-z\\$\\p{Lo}\\p{Nl}\\p{Ll}0-9]*(?:(?<=_)[!#%&*+\\-\\/:<>=?@^|~\\p{Sm}\\p{So}]+)?|[!#%&*+\\-\\/:<>=?@^|~\\p{Sm}\\p{So}]+))\\s*",
+                            "captures": {
+                                "1": {
+                                    "name": "entity.name.import.renamed-from.wyvern"
+                                },
+                                "2": {
+                                    "name": "keyword.other.arrow.wyvern"
+                                },
+                                "3": {
+                                    "name": "entity.name.import.renamed-to.wyvern"
+                                }
+                            }
+                        },
+                        {
+                            "match": "([^\\s.,}]+)",
+                            "name": "entity.name.import.wyvern"
+                        }
+                    ],
+                    "endCaptures": {
+                        "0": {
+                            "name": "meta.bracket.wyvern"
+                        }
+                    },
+                    "name": "meta.import.selector.wyvern"
+                }
+            ],
+            "name": "meta.import.wyvern"
+        },
+
+        "constants": {
+            "patterns": [
+                {
+                    "match": "\\b(false|null|true|Nil|None)\\b",
+                    "name": "constant.language.wyvern"
+                },
+                {
+                    "match": "\\b((0(x|X)[0-9a-fA-F]*)|(([0-9]+\\.[0-9]+)|(\\.[0-9]+))((e|E)(\\+|-)?[0-9]+)?|[0-9]+)([LlFfDd]|UL|ul)?\\b",
+                    "name": "constant.numeric.wyvern"
+                },
+                {
+                    "match": "\\b(this|super|self)\\b",
+                    "name": "variable.language.wyvern"
+                },
+                {
+                    "match": "\\b(Unit|Boolean|Byte|Char|Short|Int|Float|Long|Double)\\b",
+                    "name": "storage.type.primitive.wyvern"
+                },
+                {
+                    "match": "\\b(String|Symbol)\\b",
+                    "name": "storage.type.wyvern"
+                }
+            ]
+        },
+        "block-comments": {
+            "end": "\\*/",
+            "begin": "/\\*",
+            "patterns": [
+                {
+                    "include": "#block-comments"
+                },
+                {
+                    "match": "(?x)(?! /\\*)(?! \\*/)"
+                }
+            ],
+            "name": "comment.block.wyvern"
+        },
+        "script-header": {
+            "match": "^#!(.*)$",
+            "captures": {
+                "1": {
+                    "name": "string.unquoted.shebang.wyvern"
+                }
+            },
+            "name": "comment.block.shebang.wyvern"
+        },
+        "code": {
+            "patterns": [
+                {
+                    "include": "#script-header"
+                },
+                {
+                    "include": "#storage-modifiers"
+                },
+                {
+                    "include": "#declarations"
+                },
+                {
+                    "include": "#inheritance"
+                },
+                {
+                    "include": "#imports"
+                },
+                {
+                    "include": "#comments"
+                },
+                {
+                    "include": "#strings"
+                },
+                {
+                    "include": "#initialization"
+                },
+                {
+                    "include": "#xml-literal"
+                },
+                {
+                    "include": "#keywords"
+                },
+                {
+                    "include": "#constants"
+                },
+                {
+                    "include": "#wyvern-symbol"
+                },
+                {
+                    "include": "#wyvern-quoted"
+                },
+                {
+                    "include": "#char-literal"
+                },
+                {
+                    "include": "#empty-parentheses"
+                },
+                {
+                    "include": "#parameter-list"
+                },
+                {
+                    "include": "#qualifiedClassName"
+                },
+                {
+                    "include": "#meta-brackets"
+                },
+                {
+                    "include": "#meta-bounds"
+                },
+                {
+                    "include": "#meta-colons"
+                }
+            ]
+        },
+        "strings": {
+            "patterns": [
+                {
+                    "end": "\"\"\"(?!\")",
+                    "begin": "\"\"\"",
+                    "beginCaptures": {
+                        "0": {
+                            "name": "punctuation.definition.string.begin.wyvern"
+                        }
+                    },
+                    "patterns": [
+                        {
+                            "match": "\\\\\\\\|\\\\u[0-9A-Fa-f]{4}",
+                            "name": "constant.character.escape.wyvern"
+                        }
+                    ],
+                    "endCaptures": {
+                        "0": {
+                            "name": "punctuation.definition.string.end.wyvern"
+                        }
+                    },
+                    "name": "string.quoted.triple.wyvern"
+                },
+                {
+                    "begin": "\\b([A-Z\\p{Lt}\\p{Lu}_a-z\\$\\p{Lo}\\p{Nl}\\p{Ll}]+)(\"\"\")",
+                    "end": "\"\"\"(?!\")",
+                    "beginCaptures": {
+                        "1": {
+                            "name": "keyword.interpolation.wyvern"
+                        },
+                        "2": {
+                            "name": "string.quoted.triple.interpolated.wyvern punctuation.definition.string.begin.wyvern"
+                        }
+                    },
+                    "patterns": [
+                        {
+                            "include": "#string-interpolation"
+                        },
+                        {
+                            "match": "\\\\\\\\|\\\\u[0-9A-Fa-f]{4}",
+                            "name": "constant.character.escape.wyvern"
+                        },
+                        {
+                            "match": ".",
+                            "name": "string.quoted.triple.interpolated.wyvern"
+                        }
+                    ],
+                    "endCaptures": {
+                        "0": {
+                            "name": "string.quoted.triple.interpolated.wyvern punctuation.definition.string.end.wyvern"
+                        }
+                    }
+                },
+                {
+                    "end": "\"",
+                    "begin": "\"",
+                    "beginCaptures": {
+                        "0": {
+                            "name": "punctuation.definition.string.begin.wyvern"
+                        }
+                    },
+                    "patterns": [
+                        {
+                            "match": "\\\\(?:[btnfr\\\\\"']|[0-7]{1,3}|u[0-9A-Fa-f]{4})",
+                            "name": "constant.character.escape.wyvern"
+                        },
+                        {
+                            "match": "\\\\.",
+                            "name": "invalid.illegal.unrecognized-string-escape.wyvern"
+                        }
+                    ],
+                    "endCaptures": {
+                        "0": {
+                            "name": "punctuation.definition.string.end.wyvern"
+                        }
+                    },
+                    "name": "string.quoted.double.wyvern"
+                },
+                {
+                    "begin": "\\b([A-Z\\p{Lt}\\p{Lu}_a-z\\$\\p{Lo}\\p{Nl}\\p{Ll}]+)(\")",
+                    "end": "\"",
+                    "beginCaptures": {
+                        "1": {
+                            "name": "keyword.interpolation.wyvern"
+                        },
+                        "2": {
+                            "name": "string.quoted.double.interpolated.wyvern punctuation.definition.string.begin.wyvern"
+                        }
+                    },
+                    "patterns": [
+                        {
+                            "include": "#string-interpolation"
+                        },
+                        {
+                            "match": "\\\\(?:[btnfr\\\\\"']|[0-7]{1,3}|u[0-9A-Fa-f]{4})",
+                            "name": "constant.character.escape.wyvern"
+                        },
+                        {
+                            "match": "\\\\.",
+                            "name": "invalid.illegal.unrecognized-string-escape.wyvern"
+                        },
+                        {
+                            "match": ".",
+                            "name": "string.quoted.double.interpolated.wyvern"
+                        }
+                    ],
+                    "endCaptures": {
+                        "0": {
+                            "name": "string.quoted.double.interpolated.wyvern punctuation.definition.string.end.wyvern"
+                        }
+                    }
+                }
+            ]
+        },
+        "string-interpolation": {
+            "patterns": [
+                {
+                    "name": "constant.character.escape.interpolation.wyvern",
+                    "match": "\\$\\$"
+                },
+                {
+                    "match": "(\\$)([A-Z\\p{Lt}\\p{Lu}_a-z\\$\\p{Lo}\\p{Nl}\\p{Ll}][A-Z\\p{Lt}\\p{Lu}_a-z\\$\\p{Lo}\\p{Nl}\\p{Ll}0-9]*)",
+                    "captures": {
+                        "1": {
+                            "name": "punctuation.definition.template-expression.begin.wyvern"
+                        }
+                    }
+                },
+                {
+                    "name": "punctuation.definition.template-expression.wyvern",
+                    "begin": "\\$\\{",
+                    "beginCaptures": {
+                        "0": {
+                            "name": "punctuation.definition.template-expression.begin.wyvern"
+                        }
+                    },
+                    "end": "\\}",
+                    "endCaptures": {
+                        "0": {
+                            "name": "punctuation.definition.template-expression.end.wyvern"
+                        }
+                    },
+                    "patterns": [
+                        {
+                            "include": "#code"
+                        }
+                    ]
+                }
+            ]
+        },
+        "xml-entity": {
+            "match": "(&)([:a-zA-Z_][:a-zA-Z0-9_.-]*|#[0-9]+|#x[0-9a-fA-F]+)(;)",
+            "captures": {
+                "1": {
+                    "name": "punctuation.definition.constant.xml"
+                },
+                "3": {
+                    "name": "punctuation.definition.constant.xml"
+                }
+            },
+            "name": "constant.character.entity.xml"
+        },
+        "xml-singlequotedString": {
+            "end": "'",
+            "begin": "'",
+            "beginCaptures": {
+                "0": {
+                    "name": "punctuation.definition.string.begin.xml"
+                }
+            },
+            "patterns": [
+                {
+                    "include": "#xml-entity"
+                }
+            ],
+            "endCaptures": {
+                "0": {
+                    "name": "punctuation.definition.string.end.xml"
+                }
+            },
+            "name": "string.quoted.single.xml"
+        },
+        "meta-colons": {
+            "patterns": [
+                {
+                    "match": "(?<!:):(?!:)",
+                    "name": "meta.colon.wyvern"
+                }
+            ],
+            "comment": "For themes: Matching type colons"
+        },
+        "keywords": {
+            "patterns": [
+                {
+                    "match": "\\b(return|throw)\\b",
+                    "name": "keyword.control.flow.jump.wyvern"
+                },
+                {
+                    "match": "\\b(classOf|isInstanceOf|asInstanceOf)\\b",
+                    "name": "support.function.type-of.wyvern"
+                },
+                {
+                    "match": "\\b(else|if|do|while|for|yield|match|case)\\b",
+                    "name": "keyword.control.flow.wyvern"
+                },
+                {
+                    "match": "\\b(catch|finally|try)\\b",
+                    "name": "keyword.control.exception.wyvern"
+                },
+                {
+                    "match": "(==?|!=|<=|>=|<>|<|>)",
+                    "name": "keyword.operator.comparison.wyvern"
+                },
+                {
+                    "match": "(\\-|\\+|\\*|/(?![/*])|%|~)",
+                    "name": "keyword.operator.arithmetic.wyvern"
+                },
+                {
+                    "match": "(!|&&|\\|\\|)",
+                    "name": "keyword.operator.logical.wyvern"
+                },
+                {
+                    "match": "(<-|←|->|→|=>|⇒|\\?|\\:+|@|\\|)+",
+                    "name": "keyword.operator.wyvern"
+                }
+            ]
+        },
+        "wyvern-quoted": {
+            "match": "'\\{'|'\\('|'\\['|'\\{|'\\(|'\\[",
+            "name": "constant.other.quoted.wyvern"
+        },
+        "xml-doublequotedString": {
+            "end": "\"",
+            "begin": "\"",
+            "beginCaptures": {
+                "0": {
+                    "name": "punctuation.definition.string.begin.xml"
+                }
+            },
+            "patterns": [
+                {
+                    "include": "#xml-entity"
+                }
+            ],
+            "endCaptures": {
+                "0": {
+                    "name": "punctuation.definition.string.end.xml"
+                }
+            },
+            "name": "string.quoted.double.xml"
+        },
+        "declarations": {
+            "patterns": [
+                {
+                    "match": "(?x)\\b(def)\\s+(`[^`]+`|(?:[A-Z\\p{Lt}\\p{Lu}_a-z\\$\\p{Lo}\\p{Nl}\\p{Ll}][A-Z\\p{Lt}\\p{Lu}_a-z\\$\\p{Lo}\\p{Nl}\\p{Ll}0-9]*(?:(?<=_)[!#%&*+\\-\\/:<>=?@^|~\\p{Sm}\\p{So}]+)?|[!#%&*+\\-\\/:<>=?@^|~\\p{Sm}\\p{So}]+))",
+                    "captures": {
+                        "1": {
+                            "name": "keyword.declaration.wyvern"
+                        },
+                        "2": {
+                            "name": "entity.name.function.declaration"
+                        }
+                    }
+                },
+                {
+                    "match": "\\b(trait)\\s+([^\\s\\{\\(\\[]+)",
+                    "captures": {
+                        "1": {
+                            "name": "keyword.declaration.wyvern"
+                        },
+                        "2": {
+                            "name": "entity.name.class.declaration"
+                        }
+                    }
+                },
+                {
+                    "match": "\\b(?:(case)\\s+)?(class|object)\\s+([^\\s\\{\\(\\[]+)",
+                    "captures": {
+                        "1": {
+                            "name": "keyword.declaration.wyvern"
+                        },
+                        "2": {
+                            "name": "keyword.declaration.wyvern"
+                        },
+                        "3": {
+                            "name": "entity.name.class.declaration"
+                        }
+                    }
+                },
+                {
+                    "match": "\\b(type)\\s+(`[^`]+`|(?:[A-Z\\p{Lt}\\p{Lu}_a-z\\$\\p{Lo}\\p{Nl}\\p{Ll}][A-Z\\p{Lt}\\p{Lu}_a-z\\$\\p{Lo}\\p{Nl}\\p{Ll}0-9]*(?:(?<=_)[!#%&*+\\-\\/:<>=?@^|~\\p{Sm}\\p{So}]+)?|[!#%&*+\\-\\/:<>=?@^|~\\p{Sm}\\p{So}]+))",
+                    "captures": {
+                        "1": {
+                            "name": "keyword.declaration.wyvern"
+                        },
+                        "2": {
+                            "name": "entity.name.type.declaration"
+                        }
+                    }
+                },
+                {
+                    "match": "\\b(val)\\s+([A-Z\\p{Lt}\\p{Lu}][A-Z\\p{Lt}\\p{Lu}_a-z\\$\\p{Lo}\\p{Nl}\\p{Ll}0-9]*(?:(?<=_)[!#%&*+\\-\\/:<>=?@^|~\\p{Sm}\\p{So}]+)?)\\b",
+                    "captures": {
+                        "1": {
+                            "name": "keyword.declaration.stable.wyvern"
+                        },
+                        "2": {
+                            "name": "constant.other.declaration.wyvern"
+                        }
+                    }
+                },
+                {
+                    "match": "\\b(?:(val)|(var))\\s+(?:(`[^`]+`|(?:[A-Z\\p{Lt}\\p{Lu}_a-z\\$\\p{Lo}\\p{Nl}\\p{Ll}][A-Z\\p{Lt}\\p{Lu}_a-z\\$\\p{Lo}\\p{Nl}\\p{Ll}0-9]*(?:(?<=_)[!#%&*+\\-\\/:<>=?@^|~\\p{Sm}\\p{So}]+)?|[!#%&*+\\-\\/:<>=?@^|~\\p{Sm}\\p{So}]+))|(?=\\())",
+                    "captures": {
+                        "1": {
+                            "name": "keyword.declaration.stable.wyvern"
+                        },
+                        "2": {
+                            "name": "keyword.declaration.volatile.wyvern"
+                        },
+                        "3": {
+                            "name": "variable.other.declaration.wyvern"
+                        }
+                    }
+                },
+                {
+                    "match": "\\b(package)\\s+(object)\\s+([^\\s\\{\\(\\[]+)",
+                    "captures": {
+                        "1": {
+                            "name": "keyword.other.scoping.wyvern"
+                        },
+                        "2": {
+                            "name": "keyword.declaration.wyvern"
+                        },
+                        "3": {
+                            "name": "entity.name.class.declaration"
+                        }
+                    }
+                },
+                {
+                    "end": "(?<=[\\n;])",
+                    "begin": "\\b(package)\\s+",
+                    "beginCaptures": {
+                        "1": {
+                            "name": "keyword.other.import.wyvern"
+                        }
+                    },
+                    "patterns": [
+                        {
+                            "include": "#comments"
+                        },
+                        {
+                            "match": "(`[^`]+`|(?:[A-Z\\p{Lt}\\p{Lu}_a-z\\$\\p{Lo}\\p{Nl}\\p{Ll}][A-Z\\p{Lt}\\p{Lu}_a-z\\$\\p{Lo}\\p{Nl}\\p{Ll}0-9]*(?:(?<=_)[!#%&*+\\-\\/:<>=?@^|~\\p{Sm}\\p{So}]+)?|[!#%&*+\\-\\/:<>=?@^|~\\p{Sm}\\p{So}]+))",
+                            "name": "entity.name.package.wyvern"
+                        },
+                        {
+                            "match": "\\.",
+                            "name": "punctuation.definition.package"
+                        }
+                    ],
+                    "name": "meta.package.wyvern"
+                }
+            ]
+        },
+        "char-literal": {
+            "end": "'",
+            "begin": "'",
+            "beginCaptures": {
+                "0": {
+                    "name": "punctuation.definition.character.begin.wyvern"
+                }
+            },
+            "patterns": [
+                {
+                    "match": "\\\\(?:[btnfr\\\\\"']|[0-7]{1,3}|u[0-9A-Fa-f]{4})",
+                    "name": "constant.character.escape.wyvern"
+                },
+                {
+                    "match": "\\\\.",
+                    "name": "invalid.illegal.unrecognized-character-escape.wyvern"
+                },
+                {
+                    "match": "[^']{2,}",
+                    "name": "invalid.illegal.character-literal-too-long"
+                },
+                {
+                    "match": "(?<!')[^']",
+                    "name": "invalid.illegal.character-literal-too-long"
+                }
+            ],
+            "endCaptures": {
+                "0": {
+                    "name": "punctuation.definition.character.end.wyvern"
+                }
+            },
+            "name": "constant.character.literal.wyvern"
+        },
+        "initialization": {
+            "match": "\\b(new)\\s+([^\\s,\\{\\}\\(\\)\\[\\]]+)",
+            "captures": {
+                "1": {
+                    "name": "keyword.declaration.wyvern"
+                },
+                "2": {
+                    "name": "entity.name.class"
+                }
+            }
+        },
+        "wyvern-symbol": {
+            "match": "(?>'(?:[A-Z\\p{Lt}\\p{Lu}_a-z\\$\\p{Lo}\\p{Nl}\\p{Ll}][A-Z\\p{Lt}\\p{Lu}_a-z\\$\\p{Lo}\\p{Nl}\\p{Ll}0-9]*(?:(?<=_)[!#%&*+\\-\\/:<>=?@^|~\\p{Sm}\\p{So}]+)?|[!#%&*+\\-\\/:<>=?@^|~\\p{Sm}\\p{So}]+))(?!')",
+            "name": "constant.other.symbol.wyvern"
+        },
+        "meta-brackets": {
+            "patterns": [
+                {
+                    "match": "\\{",
+                    "comment": "The punctuation.section.*.begin is needed for return snippet in source bundle",
+                    "name": "punctuation.section.block.begin.wyvern"
+                },
+                {
+                    "match": "\\}",
+                    "comment": "The punctuation.section.*.end is needed for return snippet in source bundle",
+                    "name": "punctuation.section.block.end.wyvern"
+                },
+                {
+                    "match": "{|}|\\(|\\)|\\[|\\]",
+                    "name": "meta.bracket.wyvern"
+                }
+            ],
+            "comment": "For themes: Brackets look nice when colored."
+        },
+        "qualifiedClassName": {
+            "match": "(\\b([A-Z][\\w]*))",
+            "captures": {
+                "1": {
+                    "name": "entity.name.class"
+                }
+            }
+        },
+        "storage-modifiers": {
+            "patterns": [
+                {
+                    "match": "\\b(private\\[\\S+\\]|protected\\[\\S+\\]|private|protected)\\b",
+                    "name": "storage.modifier.access"
+                },
+                {
+                    "match": "\\b(synchronized|@volatile|abstract|final|lazy|sealed|implicit|override|@transient|@native)\\b",
+                    "name": "storage.modifier.other"
+                }
+            ]
+        },
+        "meta-bounds": {
+            "match": "<%|=:=|<:<|<%<|>:|<:",
+            "comment": "For themes: Matching view bounds",
+            "name": "meta.bounds.wyvern"
+        },
+        "comments": {
+            "patterns": [
+                {
+                    "match": "/\\*\\*/",
+                    "captures": {
+                        "0": {
+                            "name": "punctuation.definition.comment.wyvern"
+                        }
+                    },
+                    "name": "comment.block.empty.wyvern"
+                },
+                {
+                    "end": "\\*/",
+                    "begin": "^\\s*(/\\*\\*)(?!/)",
+                    "beginCaptures": {
+                        "1": {
+                            "name": "punctuation.definition.comment.wyvern"
+                        }
+                    },
+                    "patterns": [
+                        {
+                            "match": "(@param)\\s+(\\S+)",
+                            "captures": {
+                                "1": {
+                                    "name": "keyword.other.documentation.wyverndoc.wyvern"
+                                },
+                                "2": {
+                                    "name": "variable.parameter.wyvern"
+                                }
+                            }
+                        },
+                        {
+                            "match": "(@(?:tparam|throws))\\s+(\\S+)",
+                            "captures": {
+                                "1": {
+                                    "name": "keyword.other.documentation.wyverndoc.wyvern"
+                                },
+                                "2": {
+                                    "name": "entity.name.class"
+                                }
+                            }
+                        },
+                        {
+                            "match": "@(return|see|note|example|usecase|author|version|since|todo|deprecated|migration|define|inheritdoc)\\b",
+                            "name": "keyword.other.documentation.wyverndoc.wyvern"
+                        },
+                        {
+                            "match": "(\\[\\[)([^\\]]+)(\\]\\])",
+                            "captures": {
+                                "1": {
+                                    "name": "punctuation.definition.documentation.link.wyvern"
+                                },
+                                "2": {
+                                    "name": "entity.other.documentation.link.wyvern"
+                                },
+                                "3": {
+                                    "name": "punctuation.definition.documentation.link.wyvern"
+                                }
+                            }
+                        }
+                    ],
+                    "endCaptures": {
+                        "0": {
+                            "name": "punctuation.definition.comment.wyvern"
+                        }
+                    },
+                    "name": "comment.block.documentation.wyvern"
+                },
+                {
+                    "end": "\\*/",
+                    "begin": "/\\*",
+                    "captures": {
+                        "0": {
+                            "name": "punctuation.definition.comment.wyvern"
+                        }
+                    },
+                    "name": "comment.block.wyvern"
+                },
+                {
+                    "end": "(?!\\G)",
+                    "begin": "(^[ \\t]+)?(?=//)",
+                    "beginCaptures": {
+                        "1": {
+                            "name": "punctuation.whitespace.comment.leading.wyvern"
+                        }
+                    },
+                    "patterns": [
+                        {
+                            "end": "\\n",
+                            "begin": "//",
+                            "beginCaptures": {
+                                "0": {
+                                    "name": "punctuation.definition.comment.wyvern"
+                                }
+                            },
+                            "name": "comment.line.double-slash.wyvern"
+                        }
+                    ]
+                }
+            ]
+        },
+        "xml-embedded-content": {
+            "patterns": [
+                {
+                    "end": "}",
+                    "begin": "{",
+                    "patterns": [
+                        {
+                            "include": "#code"
+                        }
+                    ],
+                    "captures": {
+                        "0": {
+                            "name": "meta.bracket.wyvern"
+                        }
+                    },
+                    "name": "meta.source.embedded.wyvern"
+                },
+                {
+                    "match": " (?:([-_a-zA-Z0-9]+)((:)))?([_a-zA-Z-]+)=",
+                    "captures": {
+                        "1": {
+                            "name": "entity.other.attribute-name.namespace.xml"
+                        },
+                        "2": {
+                            "name": "entity.other.attribute-name.xml"
+                        },
+                        "3": {
+                            "name": "punctuation.separator.namespace.xml"
+                        },
+                        "4": {
+                            "name": "entity.other.attribute-name.localname.xml"
+                        }
+                    }
+                },
+                {
+                    "include": "#xml-doublequotedString"
+                },
+                {
+                    "include": "#xml-singlequotedString"
+                }
+            ]
+        },
+        "inheritance": {
+            "patterns": [
+                {
+                    "match": "(extends|with)\\s+([^\\s\\{\\(\\[\\]]+)",
+                    "captures": {
+                        "1": {
+                            "name": "keyword.declaration.wyvern"
+                        },
+                        "2": {
+                            "name": "entity.other.inherited-class.wyvern"
+                        }
+                    }
+                }
+            ]
+        },
+        "parameter-list": {
+            "patterns": [
+                {
+                    "match": "(?<=[^\\._$a-zA-Z0-9])(`[^`]+`|[_a-z\\$\\p{Lo}\\p{Nl}\\p{Ll}][A-Z\\p{Lt}\\p{Lu}_a-z\\$\\p{Lo}\\p{Nl}\\p{Ll}0-9]*(?:(?<=_)[!#%&*+\\-\\/:<>=?@^|~\\p{Sm}\\p{So}]+)?)\\s*(:)\\s+",
+                    "captures": {
+                        "1": {
+                            "name": "variable.parameter.wyvern"
+                        },
+                        "2": {
+                            "name": "meta.colon.wyvern"
+                        }
+                    }
+                }
+            ]
+        },
+        "xml-literal": {
+            "patterns": [
+                {
+                    "end": "(>(<))/(?:([-_a-zA-Z0-9]+)((:)))?([-_a-zA-Z0-9:]*[_a-zA-Z0-9])(>)",
+                    "begin": "(<)((?:([_a-zA-Z0-9][_a-zA-Z0-9]*)((:)))?([_a-zA-Z0-9][-_a-zA-Z0-9:]*))(?=(\\s[^>]*)?></\\2>)",
+                    "beginCaptures": {
+                        "1": {
+                            "name": "punctuation.definition.tag.xml"
+                        },
+                        "3": {
+                            "name": "entity.name.tag.namespace.xml"
+                        },
+                        "4": {
+                            "name": "entity.name.tag.xml"
+                        },
+                        "5": {
+                            "name": "punctuation.separator.namespace.xml"
+                        },
+                        "6": {
+                            "name": "entity.name.tag.localname.xml"
+                        }
+                    },
+                    "patterns": [
+                        {
+                            "include": "#xml-embedded-content"
+                        }
+                    ],
+                    "comment": "We do not allow a tag name to start with a - since this would likely conflict with the <- operator. This is not very common for tag names anyway.  Also code such as -- if (val <val2 || val> val3) will falsly be recognized as an xml tag.  The solution is to put a space on either side of the comparison operator",
+                    "endCaptures": {
+                        "1": {
+                            "name": "punctuation.definition.tag.xml"
+                        },
+                        "2": {
+                            "name": "meta.scope.between-tag-pair.xml"
+                        },
+                        "3": {
+                            "name": "entity.name.tag.namespace.xml"
+                        },
+                        "4": {
+                            "name": "entity.name.tag.xml"
+                        },
+                        "5": {
+                            "name": "punctuation.separator.namespace.xml"
+                        },
+                        "6": {
+                            "name": "entity.name.tag.localname.xml"
+                        },
+                        "7": {
+                            "name": "punctuation.definition.tag.xml"
+                        }
+                    },
+                    "name": "meta.tag.no-content.xml"
+                },
+                {
+                    "end": "(/?>)",
+                    "begin": "(</?)(?:([_a-zA-Z0-9][-_a-zA-Z0-9]*)((:)))?([_a-zA-Z0-9][-_a-zA-Z0-9:]*)(?=[^>]*?>)",
+                    "patterns": [
+                        {
+                            "include": "#xml-embedded-content"
+                        }
+                    ],
+                    "captures": {
+                        "1": {
+                            "name": "punctuation.definition.tag.xml"
+                        },
+                        "2": {
+                            "name": "entity.name.tag.namespace.xml"
+                        },
+                        "3": {
+                            "name": "entity.name.tag.xml"
+                        },
+                        "4": {
+                            "name": "punctuation.separator.namespace.xml"
+                        },
+                        "5": {
+                            "name": "entity.name.tag.localname.xml"
+                        }
+                    },
+                    "name": "meta.tag.xml"
+                },
+                {
+                    "include": "#xml-entity"
+                }
+            ]
+        }
+    },
+    "uuid": "158C0929-299A-40C8-8D89-316BE0C446E8",
+    "patterns": [
+        {
+            "include": "#code"
+        }
+    ],
+    "name": "wyvern-language-support",
+    "scopeName": "source.wyvern"
+}
